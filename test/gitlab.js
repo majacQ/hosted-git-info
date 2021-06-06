@@ -3,27 +3,20 @@ const HostedGit = require('../index')
 const t = require('tap')
 
 const invalid = [
-  // TODO these do not parse at all, but should
-  'user@gitlab.com:foo/bar/baz',
-  'user@gitlab.com:foo/bar/baz#branch',
-  'user:password@gitlab.com:foo/bar/baz',
-  'user:password@gitlab.com:foo/bar/baz#branch',
-  ':password@gitlab.com:foo/bar/baz',
-  ':password@gitlab.com:foo/bar/baz#branch',
-
-  'user@gitlab.com:foo/bar/baz.git',
-  'user@gitlab.com:foo/bar/baz.git#branch',
-  'user:password@gitlab.com:foo/bar/baz.git',
-  'user:password@gitlab.com:foo/bar/baz.git#branch',
-  ':password@gitlab.com:foo/bar/baz.git',
-  ':password@gitlab.com:foo/bar/baz.git#branch'
+  // gitlab urls can contain a /-/ segment, make sure we ignore those
+  'https://gitlab.com/foo/-/something',
+  // missing project
+  'https://gitlab.com/foo',
+  // tarball, this should not parse so that it can be used for pacote's remote fetcher
+  'https://gitlab.com/foo/bar/repository/archive.tar.gz',
+  'https://gitlab.com/foo/bar/repository/archive.tar.gz?ref=49b393e2ded775f2df36ef2ffcb61b0359c194c9'
 ]
 
 // assigning the constructor here is hacky, but the only way to make assertions that compare
 // a subset of properties to a found object pass as you would expect
 const GitHost = require('../git-host')
 const defaults = { constructor: GitHost, type: 'gitlab', user: 'foo', project: 'bar' }
-const subgroup = { constructor: GitHost, type: 'gitlab', user: 'foo', project: 'bar/baz' }
+const subgroup = { constructor: GitHost, type: 'gitlab', user: 'foo/bar', project: 'baz' }
 const valid = {
   // shortcuts
   //
@@ -81,6 +74,20 @@ const valid = {
   'user:password@gitlab.com:foo/bar.git#branch': { ...defaults, default: 'sshurl', auth: null, committish: 'branch' },
   ':password@gitlab.com:foo/bar.git': { ...defaults, default: 'sshurl', auth: null },
   ':password@gitlab.com:foo/bar.git#branch': { ...defaults, default: 'sshurl', auth: null, committish: 'branch' },
+
+  'user@gitlab.com:foo/bar/baz': { ...subgroup, default: 'sshurl', auth: null },
+  'user@gitlab.com:foo/bar/baz#branch': { ...subgroup, default: 'sshurl', auth: null, committish: 'branch' },
+  'user:password@gitlab.com:foo/bar/baz': { ...subgroup, default: 'sshurl', auth: null },
+  'user:password@gitlab.com:foo/bar/baz#branch': { ...subgroup, default: 'sshurl', auth: null, committish: 'branch' },
+  ':password@gitlab.com:foo/bar/baz': { ...subgroup, default: 'sshurl', auth: null },
+  ':password@gitlab.com:foo/bar/baz#branch': { ...subgroup, default: 'sshurl', auth: null, committish: 'branch' },
+
+  'user@gitlab.com:foo/bar/baz.git': { ...subgroup, default: 'sshurl', auth: null },
+  'user@gitlab.com:foo/bar/baz.git#branch': { ...subgroup, default: 'sshurl', auth: null, committish: 'branch' },
+  'user:password@gitlab.com:foo/bar/baz.git': { ...subgroup, default: 'sshurl', auth: null },
+  'user:password@gitlab.com:foo/bar/baz.git#branch': { ...subgroup, default: 'sshurl', auth: null, committish: 'branch' },
+  ':password@gitlab.com:foo/bar/baz.git': { ...subgroup, default: 'sshurl', auth: null },
+  ':password@gitlab.com:foo/bar/baz.git#branch': { ...subgroup, default: 'sshurl', auth: null, committish: 'branch' },
 
   // git+ssh urls
   //
