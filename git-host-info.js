@@ -25,11 +25,15 @@ var gitHosts = module.exports = {
     'bugstemplate': 'https://{domain}/{user}/{project}/issues',
     'httpstemplate': 'git+https://{auth@}{domain}/{user}/{projectPath}.git{#committish}',
     'tarballtemplate': 'https://{domain}/{user}/{project}/repository/archive.tar.gz?ref={committish}',
+  <<<<<<< nlf/simpler-regex
   <<<<<<< nlf/backport-regex-fix
     'pathmatch': /^[/]([^/]+)[/]((?!.*(\/-\/|\/repository\/archive\.tar\.gz\?=.*|\/repository\/[^/]+\/archive.tar.gz$)).*?)(?:[.]git|[/])?$/
   =======
     'pathmatch': /^\/([^/]+)\/((?!.*(\/-\/|\/repository(\/[^/]+)?\/archive\.tar\.gz)).*?)(?:\.git|\/)?$/
   >>>>>>> nlf/simpler-regex
+  =======
+    'pathmatch': /^[/]([^/]+)[/]((?!.*(\/-\/|\/repository\/archive\.tar\.gz\?=.*|\/repository\/[^/]+\/archive.tar.gz$)).*?)(?:[.]git|[/])?$/
+  >>>>>>> isaacs/fix-60-legacy
   },
   gist: {
     'protocols': [ 'git', 'git+ssh', 'git+https', 'ssh', 'https' ],

@@ -108,6 +108,7 @@ function parseGitUrl (giturl) {
   var matched = giturl.match(/^([^@]+)@([^:/]+):[/]?((?:[^/]+[/])?[^/]+?)(?:[.]git)?(#.*)?$/)
   if (!matched) {
     var legacy = url.parse(giturl)
+  <<<<<<< nlf/simpler-regex
   <<<<<<< nlf/backport-regex-fix
     // If we don't have url.URL, then sorry, this is just not fixable.
     // This affects Node <= 6.12.
@@ -115,6 +116,11 @@ function parseGitUrl (giturl) {
   =======
     if (legacy.auth) {
   >>>>>>> nlf/simpler-regex
+  =======
+    // If we don't have url.URL, then sorry, this is just not fixable.
+    // This affects Node <= 6.12.
+    if (legacy.auth && typeof url.URL === 'function') {
+  >>>>>>> isaacs/fix-60-legacy
       // git urls can be in the form of scp-style/ssh-connect strings, like
       // git+ssh://user@host.com:some/path, which the legacy url parser
       // supports, but WhatWG url.URL class does not.  However, the legacy
@@ -124,11 +130,15 @@ function parseGitUrl (giturl) {
       // Pull off just the auth and host, so we dont' get the confusing
       // scp-style URL, then pass that to the WhatWG parser to get the
       // auth properly escaped.
+  <<<<<<< nlf/simpler-regex
   <<<<<<< nlf/backport-regex-fix
       var authmatch = giturl.match(/[^@]+@[^:/]+/)
   =======
       const authmatch = giturl.match(/[^@]+@[^:/]+/)
   >>>>>>> nlf/simpler-regex
+  =======
+      const authmatch = giturl.match(/[^@]+@[^:/]+/)
+  >>>>>>> isaacs/fix-60-legacy
       /* istanbul ignore else - this should be impossible */
       if (authmatch) {
         var whatwg = new url.URL(authmatch[0])

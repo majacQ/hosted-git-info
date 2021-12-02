@@ -2,6 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+  <<<<<<< nlf/simpler-regex
   <<<<<<< nlf/backport-regex-fix
 <a name="2.8.8"></a>
 ## [2.8.8](https://github.com/npm/hosted-git-info/compare/v2.8.7...v2.8.8) (2020-02-29)
@@ -38,6 +39,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
+  =======
+  >>>>>>> isaacs/fix-60-legacy
 <a name="2.8.6"></a>
 ## [2.8.6](https://github.com/npm/hosted-git-info/compare/v2.8.5...v2.8.6) (2020-02-25)
 
@@ -45,6 +48,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 <a name="2.8.5"></a>
 ## [2.8.5](https://github.com/npm/hosted-git-info/compare/v2.8.4...v2.8.5) (2019-10-07)
+  <<<<<<< nlf/simpler-regex
   =======
 * support to github gist legacy hash length ([c067102](https://github.com/npm/hosted-git-info/commit/c067102)), closes [#68](https://github.com/npm/hosted-git-info/issues/68)
 
@@ -58,11 +62,16 @@ All notable changes to this project will be documented in this file. See [standa
 <a name="3.0.4"></a>
 ## [3.0.4](https://github.com/npm/hosted-git-info/compare/v3.0.3...v3.0.4) (2020-02-26)
   >>>>>>> nlf/simpler-regex
+  =======
+  >>>>>>> isaacs/fix-60-legacy
 
 
 ### Bug Fixes
 
+  <<<<<<< nlf/simpler-regex
   <<<<<<< nlf/backport-regex-fix
+  =======
+  >>>>>>> isaacs/fix-60-legacy
 * updated pathmatch for gitlab ([e8325b5](https://github.com/npm/hosted-git-info/commit/e8325b5)), closes [#51](https://github.com/npm/hosted-git-info/issues/51)
 * updated pathmatch for gitlab ([ffe056f](https://github.com/npm/hosted-git-info/commit/ffe056f))
 
@@ -70,6 +79,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 <a name="2.8.4"></a>
 ## [2.8.4](https://github.com/npm/hosted-git-info/compare/v2.8.3...v2.8.4) (2019-08-12)
+  <<<<<<< nlf/simpler-regex
   =======
 * Do not pass scp-style URLs to the WhatWG url.URL ([0835306](https://github.com/npm/hosted-git-info/commit/0835306)), closes [#60](https://github.com/npm/hosted-git-info/issues/60) [#63](https://github.com/npm/hosted-git-info/issues/63)
 
@@ -114,6 +124,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **cache:** Drop support for node 0.x
   >>>>>>> nlf/simpler-regex
+  =======
+  >>>>>>> isaacs/fix-60-legacy
 
 
 

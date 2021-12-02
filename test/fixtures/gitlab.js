@@ -25,6 +25,7 @@ module.exports = [
     isUndefined: true
   },
   {
+  <<<<<<< nlf/simpler-regex
   <<<<<<< nlf/backport-regex-fix
   =======
     host: function (p) { return 'https://' + p.domain + '/' + p.owner + '/' + p.project + '/repository/archive.tar.gz?ref=' + p.branch },
@@ -38,6 +39,8 @@ module.exports = [
   },
   {
   >>>>>>> nlf/simpler-regex
+  =======
+  >>>>>>> isaacs/fix-60-legacy
     host: function (p) { return 'git+https://' + p.domain + '/' + p.owner + '/' + p.project },
     label: 'git+https'
   },
