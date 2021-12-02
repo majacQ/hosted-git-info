@@ -32,8 +32,8 @@
     "lru-cache": "^6.0.0"
   },
   "devDependencies": {
-    "standard": "^16.0.3",
-    "standard-version": "^9.1.0",
+    "standard": "^16.0.4",
+    "standard-version": "^9.3.2",
     "tap": "^14.11.0"
   },
   "files": [
