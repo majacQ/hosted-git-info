@@ -1,7 +1,7 @@
 {
   "name": "hosted-git-info",
-  "version": "2.1.5",
-  "description": "Provides metadata and conversions from repository urls for Github, Bitbucket and Gitlab",
+  "version": "3.0.8",
+  "description": "Provides metadata and conversions from repository urls for GitHub, Bitbucket and GitLab",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -20,10 +20,41 @@
   },
   "homepage": "https://github.com/npm/hosted-git-info",
   "scripts": {
+  <<<<<<< nlf/rewrite
+    "prerelease": "npm t",
+    "postrelease": "npm publish && git push --follow-tags",
+    "posttest": "standard",
+    "release": "standard-version -s",
+    "snap": "tap",
+    "test:coverage": "tap --coverage-report=html",
+    "test": "tap"
+  },
+  "dependencies": {
+    "lru-cache": "^6.0.0"
+  },
+  "devDependencies": {
+    "standard": "^16.0.3",
+    "standard-version": "^9.1.0",
+    "tap": "^14.11.0"
+  },
+  "files": [
+    "index.js",
+    "git-host.js",
+    "git-host-info.js"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "tap": {
+    "color": 1,
+    "coverage": true,
+    "esm": false
+  =======
     "test": "standard && tap -j8 test/*.js"
   },
   "devDependencies": {
     "standard": "^3.3.2",
     "tap": "^10.0.2"
+  >>>>>>> zkat/newtap
   }
 }
