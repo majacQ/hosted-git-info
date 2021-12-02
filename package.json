@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/npm/hosted-git-info",
   "scripts": {
+  <<<<<<< nlf/rewrite
     "prerelease": "npm t",
     "postrelease": "npm publish && git push --follow-tags",
     "posttest": "standard",
@@ -48,5 +49,12 @@
     "color": 1,
     "coverage": true,
     "esm": false
+  =======
+    "test": "standard && tap -j8 test/*.js"
+  },
+  "devDependencies": {
+    "standard": "^3.3.2",
+    "tap": "^10.0.2"
+  >>>>>>> zkat/newtap
   }
 }
