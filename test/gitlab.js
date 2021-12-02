@@ -17,7 +17,15 @@ var testFixtures = function (t, params, fixtures) {
         tt.is(hostinfo, undefined)
         tt.end()
       })
+  <<<<<<< nlf/simpler-regex
+  <<<<<<< nlf/backport-regex-fix
       break
+  =======
+      continue
+  >>>>>>> nlf/simpler-regex
+  =======
+      break
+  >>>>>>> isaacs/fix-60-legacy
     }
 
     t.test('hostinfo.https', function (tt) {
