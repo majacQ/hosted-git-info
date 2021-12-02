@@ -35,12 +35,37 @@ class GitHost {
         options.path = options.path.slice(1)
       }
 
+  <<<<<<< nlf/fix-trailing-slash
       if (options.noCommittish) {
         options.committish = null
       }
 
       const result = template(options)
       return options.noGitPlus && result.startsWith('git+') ? result.slice(4) : result
+  =======
+GitHost.prototype._fill = function (template, opts) {
+  if (!template) return
+  var vars = extend({}, opts)
+  vars.path = vars.path ? vars.path.replace(/^[/]+/g, '') : ''
+  opts = extend(extend({}, this.opts), opts)
+  var self = this
+  Object.keys(this).forEach(function (key) {
+    if (self[key] != null && vars[key] == null) vars[key] = self[key]
+  })
+  var rawAuth = vars.auth
+  var rawcommittish = vars.committish
+  var rawFragment = vars.fragment
+  var rawPath = vars.path
+  var rawProject = vars.project
+  Object.keys(vars).forEach(function (key) {
+    var value = vars[key]
+    if ((key === 'path' || key === 'project') && typeof value === 'string') {
+      vars[key] = value.split('/').map(function (pathComponent) {
+        return encodeURIComponent(pathComponent)
+      }).join('/')
+    } else if (key !== 'domain') {
+      vars[key] = encodeURIComponent(value)
+  >>>>>>> isaacs/allow-colon-in-host
     }
 
     return null
